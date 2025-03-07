@@ -1,0 +1,133 @@
+
+.food-card {
+  transition: transform 0.4s, box-shadow 0.4s;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+  height: 100%;
+  background-color: white;
+}
+
+.food-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.12);
+}
+
+.food-img-container {
+  position: relative;
+  overflow: hidden;
+}
+
+.food-img {
+  height: 220px;
+  object-fit: cover;
+  width: 100%;
+  transition: transform 0.5s;
+}
+
+.food-card:hover .food-img {
+  transform: scale(1.05);
+}
+
+.food-price {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  background-color: rgba(255, 0, 110, 0.9);
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 50px;
+  font-weight: 600;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.food-content {
+  padding: 1.5rem;
+}
+
+.food-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: #343a40;
+}
+
+.food-description {
+  color: #6c757d;
+  font-size: 0.95rem;
+  margin-bottom: 1rem;
+  height: 60px;
+  overflow: hidden;
+}
+
+.food-category {
+  display: inline-block;
+  background-color: #3a86ff;
+  color: white;
+  font-size: 0.8rem;
+  padding: 0.35rem 0.75rem;
+  border-radius: 50px;
+  margin-bottom: 1rem;
+}
+
+.food-action {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 0.5rem;
+}
+
+.categories-container {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 10px;
+  overflow-x: auto;
+  padding: 1rem 0;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.categories-container::-webkit-scrollbar {
+  display: none;
+}
+
+.category-pill {
+  background-color: white;
+  border: 1px solid #3a86ff;
+  color: #3a86ff;
+  padding: 0.5rem 1.25rem;
+  border-radius: 50px;
+  font-weight: 500;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.category-pill:hover, .category-pill.active {
+  background-color: #3a86ff;
+  color: white;
+}
+
+.menu-section-title {
+  font-size: 2rem;
+  font-weight: 700;
+  margin: 2rem 0 1rem;
+  color: #343a40;
+  position: relative;
+  display: inline-block;
+}
+
+.menu-section-title::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 0;
+  width: 60px;
+  height: 4px;
+  background-color: #ff006e;
+  border-radius: 2px;
+}
+
+.menu-container {
+  padding: 2rem 0;
+}

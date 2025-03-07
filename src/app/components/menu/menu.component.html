@@ -1,0 +1,62 @@
+
+<div class="container my-5">
+  <h1 class="mb-4 text-center">Menu du Restaurant</h1>
+  
+  <!-- Catégories -->
+  <div class="categories-container mb-4">
+    <div class="d-flex justify-content-center flex-wrap">
+      <button 
+        class="btn m-1" 
+        [ngClass]="selectedCategory === '' ? 'btn-primary' : 'btn-outline-primary'"
+        (click)="showAllCategories()">
+        Tous les plats
+      </button>
+      <button 
+        *ngFor="let category of categories" 
+        class="btn m-1"
+        [ngClass]="selectedCategory === category ? 'btn-primary' : 'btn-outline-primary'"
+        (click)="setCategory(category)">
+        {{ category }}
+      </button>
+    </div>
+  </div>
+  
+  <!-- Loading spinner -->
+  <div *ngIf="loading" class="text-center my-5">
+    <div class="spinner-border text-primary" role="status">
+      <span class="visually-hidden">Chargement...</span>
+    </div>
+  </div>
+  
+  <!-- Error message -->
+  <div *ngIf="error" class="alert alert-danger">
+    {{ error }}
+  </div>
+  
+  <!-- Menu items -->
+  <div *ngIf="!loading && !error" class="row">
+    <div *ngFor="let food of filteredFoods()" class="col-md-4 mb-4">
+      <div class="card h-100 food-card">
+        <div class="card-body">
+          <h5 class="card-title">{{ food.name }}</h5>
+          <p class="card-text">{{ food.description }}</p>
+          <p class="card-text"><strong>Prix:</strong> {{ food.price | currency:'EUR' }}</p>
+          <p class="card-text"><small>Catégorie: {{ food.category }}</small></p>
+          
+          <!-- Admin buttons -->
+          <div *ngIf="authService.isAdmin()" class="admin-actions mt-3">
+            <button class="btn btn-sm btn-warning me-2" (click)="editFood(food.id!)">Modifier</button>
+            <button class="btn btn-sm btn-danger" (click)="deleteFood(food.id!)">Supprimer</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Add food button (Admin only) -->
+  <div *ngIf="authService.isAdmin()" class="mt-4 text-center">
+    <button class="btn btn-success" routerLink="/food-add">
+      <i class="bi bi-plus-circle me-2"></i>Ajouter un nouveau plat
+    </button>
+  </div>
+</div>
